@@ -15,19 +15,25 @@ class Calculator {
             delims = new char[] {input.charAt(2)};
             input = input.substring(index + 1);
         }
+
         int prevIndex = 0;
         Queue<Integer> negatives = new ArrayDeque<>();
         for (int index = indexOfAnyDelim(input, delims); index != -1;
              index = indexOfAnyDelim(input, delims, index+1)) {
             int value = Integer.parseInt(input.substring(prevIndex, index));
-            sum+=value;
+            if (value <= 1000) {
+                sum += value;
+            }
             if (value < 0) {
                 negatives.add(value);
             }
             prevIndex = index+1;
         }
+
         int value = Integer.parseInt(input.substring(prevIndex));
-        sum += value;
+        if (value <= 1000) {
+            sum += value;
+        }
         if (value < 0) {
             negatives.add(value);
         }
@@ -36,6 +42,7 @@ class Calculator {
                     .collect(Collectors.joining(", "));
             throw new IllegalArgumentException(message);
         }
+
         return sum;
     }
 

@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CalculatorTest {
 
@@ -30,5 +31,11 @@ class CalculatorTest {
     void task5() {
         Exception e = assertThrows(IllegalArgumentException.class, () -> Calculator.add("1,-2,3,-3"));
         assertEquals("-2, -3", e.getMessage());
+    }
+
+    @Test
+    void task6() {
+        assertEquals(6, Calculator.add("1,1002,2000,2,3000,3,1111"));
+        assertThrows(IllegalArgumentException.class, () -> Calculator.add("1,-1,1002,2,3"));
     }
 }
