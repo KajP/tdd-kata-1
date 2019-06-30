@@ -66,8 +66,10 @@ class Calculator {
         for (String delim : delims) {
             int i = input.indexOf(delim, begin);
             if (i != -1) {
-                result = i;
-                end = i + delim.length();
+                if (result == -1 || i < result) {
+                    result = i;
+                    end = i + delim.length();
+                }
             }
         }
         return new DelimResult(result, end);

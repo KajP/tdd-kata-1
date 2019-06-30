@@ -43,4 +43,9 @@ class CalculatorTest {
     void task7() {
         assertEquals(6, Calculator.add("//[***]\n1***2***3"));
     }
+
+    @Test
+    void task8() {
+        assertEquals(6, Calculator.add("//[*][%]\n1*2%3"));
+    }
 }
