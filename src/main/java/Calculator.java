@@ -1,3 +1,7 @@
+import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.stream.Collectors;
+
 class Calculator {
     static int add(String input) {
         int sum = 0;
@@ -12,13 +16,26 @@ class Calculator {
             input = input.substring(index + 1);
         }
         int prevIndex = 0;
+        Queue<Integer> negatives = new ArrayDeque<>();
         for (int index = indexOfAnyDelim(input, delims); index != -1;
              index = indexOfAnyDelim(input, delims, index+1)) {
-            int first = Integer.parseInt(input.substring(prevIndex, index));
+            int value = Integer.parseInt(input.substring(prevIndex, index));
+            sum+=value;
+            if (value < 0) {
+                negatives.add(value);
+            }
             prevIndex = index+1;
-            sum+=first;
         }
-        sum += Integer.parseInt(input.substring(prevIndex));
+        int value = Integer.parseInt(input.substring(prevIndex));
+        sum += value;
+        if (value < 0) {
+            negatives.add(value);
+        }
+        if (!negatives.isEmpty()) {
+            String message = negatives.stream().map(integer -> Integer.toString(integer))
+                    .collect(Collectors.joining(", "));
+            throw new IllegalArgumentException(message);
+        }
         return sum;
     }
 

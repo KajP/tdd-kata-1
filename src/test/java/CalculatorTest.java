@@ -25,4 +25,10 @@ class CalculatorTest {
     void task4() {
         assertEquals(3, Calculator.add("//;\n1;2"));
     }
+
+    @Test
+    void task5() {
+        Exception e = assertThrows(IllegalArgumentException.class, () -> Calculator.add("1,-2,3,-3"));
+        assertEquals("-2, -3", e.getMessage());
+    }
 }
