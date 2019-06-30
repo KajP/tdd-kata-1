@@ -15,4 +15,9 @@ class CalculatorTest {
     void task2() {
         assertEquals(137, Calculator.add("1,2,3,4,34,43,43,3,4"));
     }
+
+    @Test
+    void task3() {
+        assertEquals(6, Calculator.add("1\n2,3"));
+    }
 }
