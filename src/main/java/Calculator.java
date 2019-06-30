@@ -5,6 +5,12 @@ class Calculator {
             return sum;
 
         char[] delims = {',', '\n'};
+        if (input.startsWith("//")) {
+            // custom delim
+            int index = input.indexOf("\n");
+            delims = new char[] {input.charAt(2)};
+            input = input.substring(index + 1);
+        }
         int prevIndex = 0;
         for (int index = indexOfAnyDelim(input, delims); index != -1;
              index = indexOfAnyDelim(input, delims, index+1)) {
