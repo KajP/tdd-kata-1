@@ -38,4 +38,9 @@ class CalculatorTest {
         assertEquals(6, Calculator.add("1,1002,2000,2,3000,3,1111"));
         assertThrows(IllegalArgumentException.class, () -> Calculator.add("1,-1,1002,2,3"));
     }
+
+    @Test
+    void task7() {
+        assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+    }
 }
