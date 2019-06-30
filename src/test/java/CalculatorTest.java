@@ -10,4 +10,9 @@ class CalculatorTest {
         assertEquals(1, Calculator.add("1"));
         assertEquals(3, Calculator.add("1,2"));
     }
+
+    @Test
+    void task2() {
+        assertEquals(137, Calculator.add("1,2,3,4,34,43,43,3,4"));
+    }
 }
